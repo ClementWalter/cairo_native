@@ -294,5 +294,9 @@ fn load_contract(path: impl AsRef<Path>) -> Program {
     .unwrap()
 }
 
-criterion_group!(benches, criterion_benchmark_opt_aggressive);
+criterion_group!(
+    benches,
+    criterion_benchmark,
+    criterion_benchmark_opt_aggressive
+);
 criterion_main!(benches);
