@@ -37,7 +37,7 @@ To read more in-depth documentation, visit [this page](https://lambdaclass.notio
 
 🚧 `cairo-native` is still being built therefore API breaking changes might happen often so use it at your own risk. 🚧
 
-For versions under `1.0` `cargo` doesn't comply with [semver](https://semver.org/), so we advise to pin the version the version you use. This can be done by adding `cairo-native = "0.1.0"` to your Cargo.toml
+For versions under `1.0` `cargo` doesn't comply with [semver](https://semver.org/), so we advise to pin the version you use. This can be done by adding `cairo-native = "0.1.0"` to your Cargo.toml
 
 ## Implemented Library Functions
 
