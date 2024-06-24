@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/bin/cairo-native-run.rs`."><title>cairo-native-run.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ac92e1bbe349e143.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="cairo_native_run" data-themes="" data-resource-suffix="" data-rustdoc-version="1.76.0 (07dca489a 2024-02-04)" data-channel="1.76.0" data-search-js="search-2b6ce74ff89ae146.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-f2adc0d6ca4d09fb.js"></script><script defer src="../../static.files/src-script-39ed315d46fb705f.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-305769736d49e732.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-feafe1bb7466e4bd.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><div class="sidebar-resizer"></div>
-    <main><nav class="sub"><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/bin/cairo-native-run.rs`."><title>cairo-native-run.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-081576b923113409.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="cairo_native_run" data-themes="" data-resource-suffix="" data-rustdoc-version="1.79.0 (129f3b996 2024-06-10)" data-channel="1.79.0" data-search-js="search-bf21c90c8c1d92b1.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-e32f0c247825364d.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-09095024cf37855e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../cairo_native_run/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Type ‘S’ or ‘/’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings">Settings</a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -158,185 +157,31 @@
 <a href="#157" id="157">157</a>
 <a href="#158" id="158">158</a>
 <a href="#159" id="159">159</a>
-<a href="#160" id="160">160</a>
-<a href="#161" id="161">161</a>
-<a href="#162" id="162">162</a>
-<a href="#163" id="163">163</a>
-<a href="#164" id="164">164</a>
-<a href="#165" id="165">165</a>
-<a href="#166" id="166">166</a>
-<a href="#167" id="167">167</a>
-<a href="#168" id="168">168</a>
-<a href="#169" id="169">169</a>
-<a href="#170" id="170">170</a>
-<a href="#171" id="171">171</a>
-<a href="#172" id="172">172</a>
-<a href="#173" id="173">173</a>
-<a href="#174" id="174">174</a>
-<a href="#175" id="175">175</a>
-<a href="#176" id="176">176</a>
-<a href="#177" id="177">177</a>
-<a href="#178" id="178">178</a>
-<a href="#179" id="179">179</a>
-<a href="#180" id="180">180</a>
-<a href="#181" id="181">181</a>
-<a href="#182" id="182">182</a>
-<a href="#183" id="183">183</a>
-<a href="#184" id="184">184</a>
-<a href="#185" id="185">185</a>
-<a href="#186" id="186">186</a>
-<a href="#187" id="187">187</a>
-<a href="#188" id="188">188</a>
-<a href="#189" id="189">189</a>
-<a href="#190" id="190">190</a>
-</pre></div><pre class="rust"><code><span class="kw">use </span>cairo_lang_compiler::{
-    compile_prepared_db, db::RootDatabase, project::setup_project, CompilerConfig,
+</pre></div><pre class="rust"><code><span class="kw">mod </span>utils;
+
+<span class="kw">use </span>anyhow::Context;
+<span class="kw">use </span>cairo_lang_compiler::{
+    db::RootDatabase,
+    diagnostics::DiagnosticsReporter,
+    project::{check_compiler_path, setup_project},
 };
-<span class="kw">use </span>cairo_lang_sierra::{ids::FunctionId, program::Program, ProgramParser};
+<span class="kw">use </span>cairo_lang_diagnostics::ToOption;
+<span class="kw">use </span>cairo_lang_runner::short_string::as_cairo_short_string;
+<span class="kw">use </span>cairo_lang_sierra_generator::{
+    db::SierraGenGroup,
+    replace_ids::{DebugReplacer, SierraIdReplacer},
+};
+<span class="kw">use </span>cairo_lang_starknet::contract::get_contracts_info;
 <span class="kw">use </span>cairo_native::{
     context::NativeContext,
+    debug_info::{DebugInfo, DebugLocations},
     executor::{AotNativeExecutor, JitNativeExecutor, NativeExecutor},
-    values::JitValue,
-    OptLevel,
+    metadata::gas::{GasMetadata, MetadataComputationConfig},
 };
 <span class="kw">use </span>clap::{Parser, ValueEnum};
-<span class="kw">use </span>itertools::Itertools;
-<span class="kw">use </span>starknet_types_core::felt::Felt;
-<span class="kw">use </span>std::{
-    borrow::Cow,
-    convert::Infallible,
-    ffi::OsStr,
-    fs::{<span class="self">self</span>, File},
-    io::{<span class="self">self</span>, Write},
-    path::{Path, PathBuf},
-};
+<span class="kw">use </span>std::path::{Path, PathBuf};
 <span class="kw">use </span>tracing_subscriber::{EnvFilter, FmtSubscriber};
-
-<span class="kw">fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;(), Box&lt;<span class="kw">dyn </span>std::error::Error&gt;&gt; {
-    <span class="comment">// Parse command-line arguments.
-    </span><span class="kw">let </span>args = CmdLine::parse();
-
-    <span class="comment">// Configure logging and error handling.
-    </span>tracing::subscriber::set_global_default(
-        FmtSubscriber::builder()
-            .with_env_filter(EnvFilter::from_default_env())
-            .finish(),
-    )<span class="question-mark">?</span>;
-
-    <span class="comment">// Load the program.
-    </span><span class="kw">let </span>sierra_program = load_program(Path::new(<span class="kw-2">&amp;</span>args.input))<span class="question-mark">?</span>;
-
-    <span class="kw">let </span>entry_point = <span class="kw">match </span>sierra_program
-        .funcs
-        .iter()
-        .find(|x| x.id.debug_name == args.entry_point.debug_name || x.id == args.entry_point)
-    {
-        <span class="prelude-val">Some</span>(x) =&gt; x,
-        <span class="prelude-val">None </span>=&gt; {
-            <span class="comment">// TODO: Use a proper error.
-            </span><span class="macro">eprintln!</span>(<span class="string">"Entry point `{}` not found in program."</span>, args.entry_point);
-            <span class="kw">return </span><span class="prelude-val">Ok</span>(());
-        }
-    };
-
-    <span class="kw">let </span>native_context = NativeContext::new();
-
-    <span class="comment">// Compile the sierra program into a MLIR module.
-    </span><span class="kw">let </span>native_module = native_context.compile(<span class="kw-2">&amp;</span>sierra_program).unwrap();
-
-    <span class="comment">// Initialize arguments and return values.
-    </span><span class="kw">let </span>params_input = <span class="kw">match </span>args.inputs {
-        <span class="prelude-val">Some</span>(StdioOrPath::Stdio) =&gt; Cow::Owned(io::read_to_string(io::stdin())<span class="question-mark">?</span>),
-        <span class="prelude-val">Some</span>(StdioOrPath::Path(path)) =&gt; Cow::Owned(fs::read_to_string(path)<span class="question-mark">?</span>),
-        <span class="prelude-val">None </span>=&gt; Cow::Borrowed(<span class="string">""</span>),
-    };
-
-    <span class="kw">let </span>params = params_input
-        .split_whitespace()
-        .map(|x| {
-            JitValue::Felt252(Felt::from_dec_str(x).expect(<span class="string">"input parameter is not a valid Felt"</span>))
-        })
-        .collect_vec();
-
-    <span class="kw">let </span>opt_level = <span class="kw">match </span>args.opt_level {
-        <span class="number">0 </span>=&gt; OptLevel::None,
-        <span class="number">1 </span>=&gt; OptLevel::Less,
-        <span class="number">2 </span>=&gt; OptLevel::Default,
-        <span class="kw">_ </span>=&gt; OptLevel::Aggressive,
-    };
-
-    <span class="kw">let </span>native_executor: NativeExecutor = <span class="kw">match </span>args.mode {
-        RunMode::Aot =&gt; AotNativeExecutor::from_native_module(native_module, opt_level).into(),
-        RunMode::Jit =&gt; JitNativeExecutor::from_native_module(native_module, opt_level).into(),
-    };
-    <span class="kw">let </span>result = native_executor
-        .invoke_dynamic(<span class="kw-2">&amp;</span>entry_point.id, <span class="kw-2">&amp;</span>params, <span class="prelude-val">Some</span>(u64::MAX.into()), <span class="prelude-val">None</span>)
-        .unwrap();
-
-    <span class="kw">match </span>args.outputs {
-        <span class="prelude-val">Some</span>(StdioOrPath::Stdio) =&gt; {
-            <span class="macro">println!</span>(<span class="string">"{:#?}"</span>, result);
-        }
-        <span class="prelude-val">Some</span>(StdioOrPath::Path(path)) =&gt; {
-            <span class="kw">let </span><span class="kw-2">mut </span>file = File::create(path)<span class="question-mark">?</span>;
-            <span class="macro">writeln!</span>(file, <span class="string">"{:#?}"</span>, result)<span class="question-mark">?</span>;
-        }
-        <span class="prelude-val">None </span>=&gt; {
-            <span class="kw">if </span>args.print_outputs {
-                <span class="macro">println!</span>(<span class="string">"{:#?}"</span>, result);
-            }
-        }
-    }
-
-    <span class="prelude-val">Ok</span>(())
-}
-
-<span class="kw">fn </span>load_program(path: <span class="kw-2">&amp;</span>Path) -&gt; <span class="prelude-ty">Result</span>&lt;Program, Box&lt;<span class="kw">dyn </span>std::error::Error&gt;&gt; {
-    <span class="prelude-val">Ok</span>(<span class="kw">match </span>path.extension().and_then(OsStr::to_str) {
-        <span class="prelude-val">Some</span>(<span class="string">"cairo"</span>) =&gt; {
-            <span class="kw">let </span><span class="kw-2">mut </span>db = RootDatabase::builder().detect_corelib().build()<span class="question-mark">?</span>;
-            <span class="kw">let </span>main_crate_ids = setup_project(<span class="kw-2">&amp;mut </span>db, path)<span class="question-mark">?</span>;
-            compile_prepared_db(
-                <span class="kw-2">&amp;mut </span>db,
-                main_crate_ids,
-                CompilerConfig {
-                    replace_ids: <span class="bool-val">true</span>,
-                    ..Default::default()
-                },
-            )<span class="question-mark">?
-        </span>}
-        <span class="prelude-val">Some</span>(<span class="string">"sierra"</span>) =&gt; {
-            <span class="kw">let </span>program_src = fs::read_to_string(path)<span class="question-mark">?</span>;
-
-            <span class="kw">let </span>program_parser = ProgramParser::new();
-            program_parser
-                .parse(<span class="kw-2">&amp;</span>program_src)
-                .map_err(|e| e.map_token(|t| t.to_string()))<span class="question-mark">?
-        </span>}
-        <span class="kw">_ </span>=&gt; <span class="macro">unreachable!</span>(),
-    })
-}
-
-<span class="attr">#[derive(Clone, Debug, Parser)]
-</span><span class="kw">struct </span>CmdLine {
-    <span class="attr">#[clap(value_parser = parse_input)]
-    </span>input: PathBuf,
-    <span class="attr">#[clap(value_parser = parse_entry_point)]
-    </span>entry_point: FunctionId,
-
-    <span class="attr">#[clap(short, long, default_value = <span class="string">"jit"</span>)]
-    </span>mode: RunMode,
-    <span class="doccomment">/// Note: This is bugged for any non-zero values. See https://github.com/lambdaclass/cairo_native/issues/404.
-    </span><span class="attr">#[clap(short = <span class="string">'O'</span>, long, default_value = <span class="string">"0"</span>)]
-    </span>opt_level: usize,
-
-    <span class="attr">#[clap(short = <span class="string">'i'</span>, long = <span class="string">"inputs"</span>, value_parser = parse_io)]
-    </span>inputs: <span class="prelude-ty">Option</span>&lt;StdioOrPath&gt;,
-    <span class="attr">#[clap(short = <span class="string">'o'</span>, long = <span class="string">"outputs"</span>, value_parser = parse_io)]
-    </span>outputs: <span class="prelude-ty">Option</span>&lt;StdioOrPath&gt;,
-    <span class="attr">#[clap(short = <span class="string">'p'</span>, long = <span class="string">"print-outputs"</span>)]
-    </span>print_outputs: bool,
-}
+<span class="kw">use </span>utils::{find_function, result_to_runresult};
 
 <span class="attr">#[derive(Clone, Debug, ValueEnum)]
 </span><span class="kw">enum </span>RunMode {
@@ -344,39 +189,131 @@
     Jit,
 }
 
-<span class="attr">#[derive(Clone, Debug)]
-</span><span class="kw">enum </span>StdioOrPath {
-    Stdio,
-    Path(PathBuf),
+<span class="doccomment">/// Command line args parser.
+/// Exits with 1 if the compilation or run fails, otherwise 0.
+</span><span class="attr">#[derive(Parser, Debug)]
+#[clap(version, verbatim_doc_comment)]
+</span><span class="kw">struct </span>Args {
+    <span class="doccomment">/// The Cairo project path to compile and run its tests.
+    </span>path: PathBuf,
+    <span class="doccomment">/// Whether path is a single file.
+    </span><span class="attr">#[arg(short, long)]
+    </span>single_file: bool,
+    <span class="doccomment">/// Allows the compilation to succeed with warnings.
+    </span><span class="attr">#[arg(long)]
+    </span>allow_warnings: bool,
+    <span class="doccomment">/// In cases where gas is available, the amount of provided gas.
+    </span><span class="attr">#[arg(long)]
+    </span>available_gas: <span class="prelude-ty">Option</span>&lt;usize&gt;,
+    <span class="doccomment">/// Run with JIT or AOT (compiled).
+    </span><span class="attr">#[arg(long, value_enum, default_value_t = RunMode::Jit)]
+    </span>run_mode: RunMode,
+    <span class="doccomment">/// Optimization level, Valid: 0, 1, 2, 3. Values higher than 3 are considered as 3.
+    </span><span class="attr">#[arg(short = <span class="string">'O'</span>, long, default_value_t = <span class="number">0</span>)]
+    </span>opt_level: u8,
 }
 
-<span class="kw">fn </span>parse_input(input: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;PathBuf, String&gt; {
-    <span class="prelude-val">Ok</span>(<span class="kw">match </span>Path::new(input).extension().and_then(OsStr::to_str) {
-        <span class="prelude-val">Some</span>(<span class="string">"cairo" </span>| <span class="string">"sierra"</span>) =&gt; input.into(),
-        <span class="kw">_ </span>=&gt; {
-            <span class="kw">return </span><span class="prelude-val">Err</span>(
-                <span class="string">"Input path expected to have either `cairo` or `sierra` as its extension."
-                    </span>.to_string(),
-            )
+<span class="kw">fn </span>main() -&gt; anyhow::Result&lt;()&gt; {
+    <span class="comment">// Configure logging and error handling.
+    </span>tracing::subscriber::set_global_default(
+        FmtSubscriber::builder()
+            .with_env_filter(EnvFilter::from_default_env())
+            .finish(),
+    )<span class="question-mark">?</span>;
+
+    <span class="kw">let </span>args = Args::parse();
+
+    <span class="comment">// Check if args.path is a file or a directory.
+    </span>check_compiler_path(args.single_file, <span class="kw-2">&amp;</span>args.path)<span class="question-mark">?</span>;
+
+    <span class="kw">let </span>db = <span class="kw-2">&amp;mut </span>RootDatabase::builder().detect_corelib().build()<span class="question-mark">?</span>;
+
+    <span class="kw">let </span>main_crate_ids = setup_project(db, Path::new(<span class="kw-2">&amp;</span>args.path))<span class="question-mark">?</span>;
+
+    <span class="kw">let </span><span class="kw-2">mut </span>reporter = DiagnosticsReporter::stderr();
+    <span class="kw">if </span>args.allow_warnings {
+        reporter = reporter.allow_warnings();
+    }
+    <span class="kw">if </span>reporter.check(db) {
+        <span class="macro">anyhow::bail!</span>(<span class="string">"failed to compile: {}"</span>, args.path.display());
+    }
+
+    <span class="kw">let </span>sierra_program = db
+        .get_sierra_program(main_crate_ids.clone())
+        .to_option()
+        .with_context(|| <span class="string">"Compilation failed without any diagnostics."</span>)<span class="question-mark">?
+        </span>.program
+        .clone();
+    <span class="kw">let </span>replacer = DebugReplacer { db };
+    <span class="kw">if </span>args.available_gas.is_none() &amp;&amp; sierra_program.requires_gas_counter() {
+        <span class="macro">anyhow::bail!</span>(<span class="string">"Program requires gas counter, please provide `--available-gas` argument."</span>);
+    }
+
+    <span class="kw">let </span>_contracts_info = get_contracts_info(db, main_crate_ids, <span class="kw-2">&amp;</span>replacer)<span class="question-mark">?</span>;
+    <span class="kw">let </span>sierra_program = replacer.apply(<span class="kw-2">&amp;</span>sierra_program);
+
+    <span class="kw">let </span>native_context = NativeContext::new();
+
+    <span class="kw">let </span>debug_locations = {
+        <span class="kw">let </span>debug_info = DebugInfo::extract(db, <span class="kw-2">&amp;</span>sierra_program)
+            .map_err(|<span class="kw">_</span>| {
+                <span class="kw">let </span><span class="kw-2">mut </span>buffer = String::new();
+                <span class="macro">assert!</span>(DiagnosticsReporter::write_to_string(<span class="kw-2">&amp;mut </span>buffer).check(db));
+                buffer
+            })
+            .unwrap();
+
+        DebugLocations::extract(native_context.context(), db, <span class="kw-2">&amp;</span>debug_info)
+    };
+
+    <span class="comment">// Compile the sierra program into a MLIR module.
+    </span><span class="kw">let </span>native_module = native_context
+        .compile(<span class="kw-2">&amp;</span>sierra_program, <span class="prelude-val">Some</span>(debug_locations))
+        .unwrap();
+
+    <span class="kw">let </span>native_executor: NativeExecutor = <span class="kw">match </span>args.run_mode {
+        RunMode::Aot =&gt; {
+            AotNativeExecutor::from_native_module(native_module, args.opt_level.into()).into()
         }
-    })
-}
+        RunMode::Jit =&gt; {
+            JitNativeExecutor::from_native_module(native_module, args.opt_level.into()).into()
+        }
+    };
 
-<span class="kw">fn </span>parse_entry_point(input: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;FunctionId, Infallible&gt; {
-    <span class="prelude-val">Ok</span>(<span class="kw">match </span>input.parse::&lt;u64&gt;() {
-        <span class="prelude-val">Ok</span>(id) =&gt; FunctionId::new(id),
-        <span class="prelude-val">Err</span>(<span class="kw">_</span>) =&gt; FunctionId::from_string(input),
-    })
-}
+    <span class="kw">let </span>gas_metadata =
+        GasMetadata::new(<span class="kw-2">&amp;</span>sierra_program, <span class="prelude-val">Some</span>(MetadataComputationConfig::default())).unwrap();
 
-<span class="kw">fn </span>parse_io(input: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Result</span>&lt;StdioOrPath, String&gt; {
-    <span class="prelude-val">Ok</span>(<span class="kw">if </span>input == <span class="string">"-" </span>{
-        StdioOrPath::Stdio
-    } <span class="kw">else </span>{
-        StdioOrPath::Path(<span class="kw">match </span>Path::new(input).extension().and_then(OsStr::to_str) {
-            <span class="prelude-val">Some</span>(<span class="string">"json"</span>) =&gt; input.into(),
-            <span class="kw">_ </span>=&gt; <span class="kw">return </span><span class="prelude-val">Err</span>(<span class="string">"Input path expected to have `json` as its extension."</span>.to_string()),
-        })
-    })
+    <span class="kw">let </span>func = find_function(<span class="kw-2">&amp;</span>sierra_program, <span class="string">"::main"</span>)<span class="question-mark">?</span>;
+
+    <span class="kw">let </span>initial_gas = gas_metadata
+        .get_initial_available_gas(<span class="kw-2">&amp;</span>func.id, args.available_gas.map(|x| x.try_into().unwrap()))
+        .with_context(|| <span class="string">"not enough gas to run"</span>)<span class="question-mark">?</span>;
+
+    <span class="kw">let </span>result = native_executor
+        .invoke_dynamic(<span class="kw-2">&amp;</span>func.id, <span class="kw-2">&amp;</span>[], <span class="prelude-val">Some</span>(initial_gas))
+        .with_context(|| <span class="string">"Failed to run the function."</span>)<span class="question-mark">?</span>;
+
+    <span class="kw">let </span>run_result = result_to_runresult(<span class="kw-2">&amp;</span>result)<span class="question-mark">?</span>;
+
+    <span class="kw">match </span>run_result {
+        cairo_lang_runner::RunResultValue::Success(values) =&gt; {
+            <span class="macro">println!</span>(<span class="string">"Run completed successfully, returning {values:?}"</span>)
+        }
+        cairo_lang_runner::RunResultValue::Panic(values) =&gt; {
+            <span class="macro">print!</span>(<span class="string">"Run panicked with ["</span>);
+            <span class="kw">for </span>value <span class="kw">in </span><span class="kw-2">&amp;</span>values {
+                <span class="kw">match </span>as_cairo_short_string(value) {
+                    <span class="prelude-val">Some</span>(as_string) =&gt; <span class="macro">print!</span>(<span class="string">"{value} ('{as_string}'), "</span>),
+                    <span class="prelude-val">None </span>=&gt; <span class="macro">print!</span>(<span class="string">"{value}, "</span>),
+                }
+            }
+            <span class="macro">println!</span>(<span class="string">"]."</span>)
+        }
+    }
+    <span class="kw">if let </span><span class="prelude-val">Some</span>(gas) = result.remaining_gas {
+        <span class="macro">println!</span>(<span class="string">"Remaining gas: {gas}"</span>);
+    }
+
+    <span class="prelude-val">Ok</span>(())
 }
 </code></pre></div></section></main></body></html>
